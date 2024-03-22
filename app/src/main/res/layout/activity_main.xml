@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/txtUVIndex"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:text="UV 지수: "
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/txtAirIndex"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:text="미세먼지지수: "
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/txtWEEKIndex"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:text="미세먼지지수: "
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/txtLandIndex"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="이번주 날씨 "
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/txtShortIndex"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="단기날씨API "
+        android:textSize="25sp"/>
+</LinearLayout>
