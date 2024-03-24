@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val txtWeekIndex = findViewById<TextView>(R.id.txtWEEKIndex)
         val txtLandIndex = findViewById<TextView>(R.id.txtLandIndex)
         val txtShortIndex = findViewById<TextView>(R.id.txtShortIndex)
+        val txtRealShortIndex = findViewById<TextView>(R.id.txtRealShortIndex)
 
         // UV 지수 가져오기
         GlobalScope.launch(Dispatchers.Main) {
@@ -26,12 +27,14 @@ class MainActivity : AppCompatActivity() {
             val WeekIndex = ThisWeekApi.getWEEKIndex()
             val LandIndex = MidLandApi.getLandIndex()
             val ShortIndex = ShortApi.getShortIndex()
+            val RealShortIndex = RealShortApi.getRealShortIndex()
 
             txtUVIndex.text = uvIndex
             txtAirIndex.text = AirIndex
             txtWeekIndex.text = WeekIndex.joinToString(", ")
             txtLandIndex.text = LandIndex.joinToString(", ")
             txtShortIndex.text = ShortIndex.joinToString( ", " )
+            txtRealShortIndex.text = RealShortIndex.joinToString( ", " )
         }
     }
 }

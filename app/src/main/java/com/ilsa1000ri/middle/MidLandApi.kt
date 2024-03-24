@@ -67,6 +67,8 @@ object MidLandApi {
         val day5pm = Regex("<rnSt5Pm>(.*?)</rnSt5Pm>")
         val matchResultday5pm = day5pm.find(xmlString)
         val rday5pmValue = matchResultday5pm?.groupValues?.get(1) ?: ""
+
+
         //날씨 예보
         val wday3am = Regex("<rnSt3Am>(.*?)</rnSt3Am>")
         val wmatchResultday3am = wday3am.find(xmlString)
@@ -92,7 +94,8 @@ object MidLandApi {
         val wmatchResultday5pm = wday5pm.find(xmlString)
         val wday5pmValue = wmatchResultday5pm?.groupValues?.get(1) ?: ""
 
-        return listOf(rday3amValue, rday3pmValue, rday4amValue, rday4pmValue, rday5amValue, rday3pmValue,
-            wday3amValue,wday3pmValue, wday4amValue, wday4pmValue, wday5amValue,wday5pmValue )
+
+        return listOf(rday3amValue, rday3pmValue, rday4amValue, rday4pmValue, rday5amValue, rday5pmValue,
+            wday3amValue,wday3pmValue, wday4amValue, wday4pmValue, wday5amValue,wday5pmValue)
     }
 }

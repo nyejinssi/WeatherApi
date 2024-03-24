@@ -9,19 +9,19 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 object ShortApi {
-    private const val BASE_URL = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst"
+    private const val BASE_URL = "http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst"
     private const val SERVICE_KEY = ""
     private const val PAGE_NO = "1"
     private const val NUM_OF_ROWS = "10"
     private const val BASE_DATE = "20240322"
-    private const val BASE_TIME = "0600"
+    private const val BASE_TIME = "1700"
     private const val NX = "55"
     private const val NY = "127"
 
     suspend fun getShortIndex(): List<String> {
         return withContext(Dispatchers.IO) {
             val urlBuilder = StringBuilder(BASE_URL) /* URL */
-            urlBuilder.append("?ServiceKey$SERVICE_KEY")
+            urlBuilder.append("?ServiceKey=$SERVICE_KEY")
             urlBuilder.append("&numOfRows=$NUM_OF_ROWS")
             urlBuilder.append("&pageNo=$PAGE_NO")
             urlBuilder.append("&base_date=$BASE_DATE")
@@ -49,17 +49,17 @@ object ShortApi {
 
     fun extractValuesFromXml(xmlString: String): List<String> {
         val categoryRegex = Regex("<category>(.*?)</category>")
-        val obsrValueRegex = Regex("<obsrValue>(.*?)</obsrValue>")
+        val obsrValueRegex = Regex("<fcstValue>(.*?)</fcstValue>")
 
         val categoryMatches = categoryRegex.findAll(xmlString)
-        val obsrValueMatches = obsrValueRegex.findAll(xmlString)
+        val fcstValueMatches = obsrValueRegex.findAll(xmlString)
 
         val result = mutableListOf<String>()
 
-        for (match in categoryMatches.zip(obsrValueMatches)) {
+        for (match in categoryMatches.zip(fcstValueMatches)) {
             val category = match.first.groupValues[1]
-            val obsrValue = match.second.groupValues[1]
-            result.add("$category: $obsrValue")
+            val fcstValue = match.second.groupValues[1]
+            result.add("$category: $fcstValue")
         }
 
         return result
